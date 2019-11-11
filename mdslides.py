@@ -25,12 +25,13 @@ parser.add_argument('-l',
                     help="path to the logo to be shown in the presentation")
 args = parser.parse_args()
 
+# Failure cases
 if which("pandoc") is None:
   print("Pandoc not installed!")
   exit()
 
 if not isfile(args.md_file):
-  print(args.md_file + "is not a file.")
+  print(args.md_file + " is not a file.")
   exit()
 
 # Logo addition
@@ -40,10 +41,13 @@ if not (args.logo is None):
   else:
     print(args.logo + " is not a file.")
     # still generates the presentation, without a logo
+
+
+# TODO: add color scheme processing
+
+system("pandoc {} -t beamer -o {}".format(args.md_file, args.output))
                                          
 '''
-  if (len(sys.argv) > 3) and (sys.argv[3] == "-l"): # this if is all brutal and needs to be changed
-    logofile = sys.argv[4]
     styfile = open("beamerthememhthm.sty",'r+')
     lines = styfile.readlines() 
     styfile.seek(0)
@@ -51,6 +55,4 @@ if not (args.logo is None):
     for line in lines:
       styfile.write(line)
     styfile.close()
-  # TODO: use something more advanced than system for all the options; also use format
-  system("pandoc " + in_file + " -t beamer -o" + out_file)
   '''
