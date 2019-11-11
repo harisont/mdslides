@@ -33,6 +33,13 @@ if not isfile(args.md_file):
   print(args.md_file + "is not a file.")
   exit()
 
+# Logo addition
+if not (args.logo is None):
+  if isfile(args.logo):
+    pass # TODO: add logo to style file 
+  else:
+    print(args.logo + " is not a file.")
+    # still generates the presentation, without a logo
                                          
 '''
   if (len(sys.argv) > 3) and (sys.argv[3] == "-l"): # this if is all brutal and needs to be changed
