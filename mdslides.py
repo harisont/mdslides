@@ -4,6 +4,7 @@ import sys
 from os import system
 from os.path import isfile
 import argparse
+from shutil import which
 
 parser = argparse.ArgumentParser()
 parser.add_argument('md_file', 
@@ -23,6 +24,10 @@ parser.add_argument('-l',
                     metavar='FILE',
                     help="path to the logo to be shown in the presentation")
 args = parser.parse_args()
+
+if which("pandoc") is None:
+  print("Pandoc not installed!")
+  exit()
 
 if not isfile(args.md_file):
   print(args.md_file + "is not a file.")
