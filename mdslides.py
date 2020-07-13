@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
-import sys
+import argparse
 from os import system
 from os.path import isfile
-import argparse
 from shutil import which
 
 parser = argparse.ArgumentParser()
@@ -41,7 +40,6 @@ if not (args.logo is None):
   else:
     print(args.logo + " is not a file.")
     # still generates the presentation, without a logo
-
 
 # TODO: add color scheme processing
 
